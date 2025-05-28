@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Thông tin cá nhân</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Thông tin cá nhân</h2>
+        <img src="/avatar/{{ user[6] }}" width="100" height="100" style="border-radius: 50%;"><br><br>
+        <strong>Họ tên:</strong> {{ user[4] }}<br>
+        <strong>Email:</strong> {{ user[3] }}<br>
+        <strong>SĐT:</strong> {{ user[5] }}<br>
+        <strong>Giới thiệu:</strong> {{ user[7] }}<br><br>
+        <div class="button-group">
+            <a href="/edit" class="btn">Chỉnh sửa</a>
+            <a href="/logout" class="btn btn-secondary">Đăng xuất</a>
+        </div>
+    </div>
+</body>
+</html>

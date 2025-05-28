@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng Ký</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Đăng ký</h2>
+        <form method="post">
+            <label>Username:</label>
+            <input type="text" name="username" required>
+
+            <label>Password:</label>
+            <input type="password" name="password" required>
+
+            <label>Email:</label>
+            <input type="email" name="email">
+
+            <label>Họ tên:</label>
+            <input type="text" name="fullname">
+
+            <label>SĐT:</label>
+            <input type="text" name="phone">
+
+            <label>Ảnh đại diện (tên file):</label>
+            <input type="text" name="avatar_url" id="avatar_url">
+            <img id="preview" src="" style="display:none; width:100px; border-radius:50%;"><br>
+
+            <label>Giới thiệu:</label>
+            <textarea name="bio"></textarea>
+
+            <button type="submit">Đăng ký</button>
+        </form>
+        <a href="{{ url_for('login') }}">Đã có tài khoản? Đăng nhập</a>
+    </div>
+
+    <script>
+        const input = document.getElementById('avatar_url');
+        const img = document.getElementById('preview');
+        input.addEventListener('input', () => {
+            const filename = input.value.trim();
+            if (filename) {
+                img.src = '/avatar/' + filename;
+                img.style.display = 'inline';
+            } else {
+                img.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

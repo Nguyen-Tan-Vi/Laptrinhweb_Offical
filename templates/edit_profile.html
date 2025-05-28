@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Chỉnh sửa hồ sơ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Chỉnh sửa thông tin</h2>
+        <form method="post">
+            <label>Họ tên:</label>
+            <input name="fullname" value="{{ user[4] }}">
+
+            <label>Email:</label>
+            <input name="email" value="{{ user[3] }}">
+
+            <label>SĐT:</label>
+            <input name="phone" value="{{ user[5] }}">
+
+            <label>Ảnh đại diện (tên file):</label>
+            <input name="avatar_url" id="avatar_url" value="{{ user[6] }}">
+            <img id="preview" src="/avatar/{{ user[6] }}" style="width:100px; border-radius:50%;"><br>
+
+            <label>Giới thiệu:</label>
+            <textarea name="bio">{{ user[7] }}</textarea>
+
+            <button type="submit">Lưu</button>
+        </form>
+        <a href="{{ url_for('profile') }}">Quay lại</a>
+    </div>
+
+    <script>
+        const input = document.getElementById('avatar_url');
+        const img = document.getElementById('preview');
+        input.addEventListener('input', () => {
+            img.src = '/avatar/' + input.value.trim();
+        });
+    </script>
+</body>
+</html>
